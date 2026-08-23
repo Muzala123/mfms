@@ -1,7 +1,9 @@
 Source/
 SPEC.md
 tasks/
+EXPLAINER.md
 .DS_Store
 mfms
 mfms.exe
+*.o
 *.out
