@@ -31,3 +31,25 @@ int readIntInRange(const char *prompt, int min, int max)
         return value;
     }
 }
+
+double readDoublePositive(const char *prompt)
+{
+    double value;
+    int read;
+
+    for (;;) {
+        printf("%s", prompt);
+        read = scanf("%lf", &value);
+        if (read != 1) {
+            printf("Invalid input. Please enter a number.\n");
+            clearLine();
+            continue;
+        }
+        clearLine();
+        if (value < 0) {
+            printf("The value cannot be negative.\n");
+            continue;
+        }
+        return value;
+    }
+}
