@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "common.h"
 
 /* Discards the rest of the current input line so the next read starts clean. */
@@ -51,5 +52,24 @@ double readDoublePositive(const char *prompt)
             continue;
         }
         return value;
+    }
+}
+
+void readText(const char *prompt, char buffer[], int len)
+{
+    for (;;) {
+        printf("%s", prompt);
+        if (fgets(buffer, len, stdin) == NULL) {
+            continue; /* input stream closed, try again */
+        }
+        if (strchr(buffer, '\n') == NULL) {
+            clearLine(); /* line longer than the buffer, discard the rest */
+        }
+        buffer[strcspn(buffer, "\n")] = '\0';
+        if (strlen(buffer) == 0) {
+            printf("Input cannot be empty.\n");
+            continue;
+        }
+        return;
     }
 }
