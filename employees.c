@@ -25,3 +25,9 @@ int addEmployee(int ids[], char names[][TEXT_LEN], char departments[][TEXT_LEN],
     printf("Employee %d added.\n", ids[count]);
     return count + 1;
 }
+
+double calculateSalary(double basic, double housing, double transport)
+{
+    /* Gross salary only: basic plus the two allowances. No deductions. */
+    return basic + housing + transport;
+}
