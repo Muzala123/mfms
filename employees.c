@@ -31,3 +31,32 @@ double calculateSalary(double basic, double housing, double transport)
     /* Gross salary only: basic plus the two allowances. No deductions. */
     return basic + housing + transport;
 }
+
+void printEmployee(int id, const char name[], const char department[],
+                   double basic, double housing, double transport)
+{
+    printf("%-6d %-25s %-15s %12.2f %12.2f %12.2f %12.2f\n",
+           id, name, department, basic, housing, transport,
+           calculateSalary(basic, housing, transport));
+}
+
+void displayEmployees(int ids[], const char names[][TEXT_LEN],
+                      const char departments[][TEXT_LEN], const double basic[],
+                      const double housing[], const double transport[], int count)
+{
+    int i;
+
+    if (count == 0) {
+        printf("No employees registered yet.\n");
+        return;
+    }
+
+    printf("--- Employee Register ---\n");
+    printf("%-6s %-25s %-15s %12s %12s %12s %12s\n",
+           "ID", "Name", "Department", "Basic", "Housing", "Transport",
+           "Gross");
+    for (i = 0; i < count; i++) {
+        printEmployee(ids[i], names[i], departments[i], basic[i],
+                      housing[i], transport[i]);
+    }
+}
