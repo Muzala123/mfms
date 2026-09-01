@@ -60,3 +60,15 @@ void displayEmployees(int ids[], const char names[][TEXT_LEN],
                       housing[i], transport[i]);
     }
 }
+
+int searchEmployee(const int ids[], int count, int id)
+{
+    int i;
+
+    for (i = 0; i < count; i++) {
+        if (ids[i] == id) {
+            return i;
+        }
+    }
+    return -1;
+}
