@@ -30,3 +30,29 @@ int addBudget(char departments[][TEXT_LEN], double allocated[],
     printf("Budget for %s registered.\n", departments[count]);
     return count + 1;
 }
+
+int addExpenditure(const char departments[][TEXT_LEN], double expenditure[],
+                   int count)
+{
+    char target[TEXT_LEN];
+    int i;
+    double amount;
+
+    if (count == 0) {
+        printf("No budgets registered yet.\n");
+        return 0;
+    }
+
+    readText("Department name: ", target, TEXT_LEN);
+
+    for (i = 0; i < count; i++) {
+        if (strcmp(departments[i], target) == 0) {
+            amount = readDoublePositive("Expenditure amount (N$): ");
+            expenditure[i] += amount;
+            printf("Expenditure for %s updated.\n", departments[i]);
+            return 1;
+        }
+    }
+    printf("No department named %s was found.\n", target);
+    return 0;
+}
