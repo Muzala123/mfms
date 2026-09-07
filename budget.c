@@ -56,3 +56,26 @@ int addExpenditure(const char departments[][TEXT_LEN], double expenditure[],
     printf("No department named %s was found.\n", target);
     return 0;
 }
+
+void displayBudgets(const char departments[][TEXT_LEN], const double allocated[],
+                    const double expenditure[], int count)
+{
+    int i;
+
+    if (count == 0) {
+        printf("No budgets registered yet.\n");
+        return;
+    }
+
+    for (i = 0; i < count; i++) {
+        printf("\nDepartment: %s\n", departments[i]);
+        printf("Allocated Budget: N$%.2f\n", allocated[i]);
+        printf("Expenditure: N$%.2f\n", expenditure[i]);
+        printf("Remaining Budget: N$%.2f\n", allocated[i] - expenditure[i]);
+        if (expenditure[i] <= allocated[i]) {
+            printf("Status: WITHIN BUDGET\n");
+        } else {
+            printf("Status: OVER BUDGET\n");
+        }
+    }
+}
