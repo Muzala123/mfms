@@ -79,3 +79,26 @@ void displayBudgets(const char departments[][TEXT_LEN], const double allocated[]
         }
     }
 }
+
+void listOverBudget(const char departments[][TEXT_LEN], const double allocated[],
+                    const double expenditure[], int count)
+{
+    int i;
+    int overCount = 0;
+
+    if (count == 0) {
+        printf("No budgets registered yet.\n");
+        return;
+    }
+
+    for (i = 0; i < count; i++) {
+        if (expenditure[i] > allocated[i]) {
+            printf("%s: spent N$%.2f of N$%.2f\n", departments[i],
+                   expenditure[i], allocated[i]);
+            overCount++;
+        }
+    }
+    if (overCount == 0) {
+        printf("No department has exceeded its budget.\n");
+    }
+}
