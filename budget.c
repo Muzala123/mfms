@@ -102,3 +102,40 @@ void listOverBudget(const char departments[][TEXT_LEN], const double allocated[]
         printf("No department has exceeded its budget.\n");
     }
 }
+
+void budgetMenu(char departments[][TEXT_LEN], double allocated[],
+                double expenditure[], int *count)
+{
+    int choice;
+
+    for (;;) {
+        printf("\n--- BUDGET MANAGEMENT ---\n");
+        printf("1. Add departmental budget\n");
+        printf("2. Add expenditure\n");
+        printf("3. Display budgets\n");
+        printf("4. Over budget departments\n");
+        printf("0. Back to main menu\n");
+        choice = readIntInRange("Enter your choice: ", 0, 4);
+
+        if (choice == 0) {
+            return;
+        }
+
+        switch (choice) {
+        case 1:
+            *count = addBudget(departments, allocated, expenditure, *count);
+            break;
+        case 2:
+            addExpenditure(departments, expenditure, *count);
+            break;
+        case 3:
+            displayBudgets(departments, allocated, expenditure, *count);
+            break;
+        case 4:
+            listOverBudget(departments, allocated, expenditure, *count);
+            break;
+        default:
+            break;
+        }
+    }
+}
