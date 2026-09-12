@@ -21,7 +21,7 @@ produces summary reports.
 ## Compilation & Running
 
 ```bash
-gcc -std=c99 -Wall -Wextra -o mfms main.c common.c employees.c budget.c suppliers.c assets.c reports.c
+gcc -std=c99 -Wall -Wextra -Isrc -o mfms src/main.c src/common.c src/employees.c src/budget.c src/suppliers.c src/assets.c src/reports.c
 ./mfms
 ```
 
