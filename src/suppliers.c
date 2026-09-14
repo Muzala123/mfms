@@ -63,3 +63,15 @@ void showNameLengths(const char names[][TEXT_LEN], int count)
         printf("%s: %d characters\n", names[i], (int)strlen(names[i]));
     }
 }
+
+int searchSupplier(const char names[][TEXT_LEN], int count, const char target[])
+{
+    int i;
+
+    for (i = 0; i < count; i++) {
+        if (strcmp(names[i], target) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
