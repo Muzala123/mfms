@@ -75,3 +75,53 @@ int searchSupplier(const char names[][TEXT_LEN], int count, const char target[])
     }
     return -1;
 }
+
+void supplierMenu(int ids[], char names[][TEXT_LEN], char emails[][TEXT_LEN],
+                  char phones[][TEXT_LEN], char towns[][TEXT_LEN], int *count)
+{
+    int choice;
+    int index;
+    char target[TEXT_LEN];
+
+    for (;;) {
+        printf("\n--- SUPPLIER MANAGEMENT ---\n");
+        printf("1. Add supplier\n");
+        printf("2. Display suppliers\n");
+        printf("3. Search supplier\n");
+        printf("4. Show supplier name lengths\n");
+        printf("0. Back to main menu\n");
+        choice = readIntInRange("Enter your choice: ", 0, 4);
+
+        if (choice == 0) {
+            return;
+        }
+
+        switch (choice) {
+        case 1:
+            *count = addSupplier(ids, names, emails, phones, towns, *count);
+            break;
+        case 2:
+            displaySuppliers(ids, names, emails, phones, towns, *count);
+            break;
+        case 3:
+            if (*count == 0) {
+                printf("No suppliers registered yet.\n");
+                break;
+            }
+            readText("Supplier name to search: ", target, TEXT_LEN);
+            index = searchSupplier(names, *count, target);
+            if (index >= 0) {
+                printSupplier(ids[index], names[index], emails[index],
+                              phones[index], towns[index]);
+            } else {
+                printf("No supplier named %s was found.\n", target);
+            }
+            break;
+        case 4:
+            showNameLengths(names, *count);
+            break;
+        default:
+            break;
+        }
+    }
+}
