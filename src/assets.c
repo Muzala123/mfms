@@ -46,3 +46,25 @@ int addAsset(int ids[], char names[][TEXT_LEN], char types[][TEXT_LEN],
     printf("Asset %d added.\n", ids[count]);
     return count + 1;
 }
+
+void displayAssets(int ids[], const char names[][TEXT_LEN],
+                   const char types[][TEXT_LEN], const double values[],
+                   const char departments[][TEXT_LEN],
+                   const char conditions[][TEXT_LEN], int count)
+{
+    int i;
+
+    if (count == 0) {
+        printf("No assets registered yet.\n");
+        return;
+    }
+
+    printf("--- Asset Register ---\n");
+    printf("%-6s %-20s %-12s %12s %-15s %-8s\n",
+           "ID", "Name", "Type", "Value", "Department", "Condition");
+    for (i = 0; i < count; i++) {
+        printf("%-6d %-20s %-12s %12.2f %-15s %-8s\n",
+               ids[i], names[i], types[i], values[i], departments[i],
+               conditions[i]);
+    }
+}
