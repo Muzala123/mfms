@@ -68,3 +68,36 @@ void displayAssets(int ids[], const char names[][TEXT_LEN],
                conditions[i]);
     }
 }
+
+int searchAssets(int ids[], const char names[][TEXT_LEN],
+                 const char types[][TEXT_LEN], const double values[],
+                 const char departments[][TEXT_LEN],
+                 const char conditions[][TEXT_LEN], int count)
+{
+    char target[TEXT_LEN];
+    int field;
+    int i;
+    int matches = 0;
+
+    if (count == 0) {
+        printf("No assets registered yet.\n");
+        return 0;
+    }
+
+    field = readIntInRange("Search by 1) Type or 2) Department: ", 1, 2);
+    readText("Search term: ", target, TEXT_LEN);
+
+    for (i = 0; i < count; i++) {
+        if ((field == 1 && strcmp(types[i], target) == 0) ||
+            (field == 2 && strcmp(departments[i], target) == 0)) {
+            printf("%-6d %-20s %-12s %12.2f %-15s %-8s\n",
+                   ids[i], names[i], types[i], values[i], departments[i],
+                   conditions[i]);
+            matches++;
+        }
+    }
+    if (matches == 0) {
+        printf("No assets match %s.\n", target);
+    }
+    return matches;
+}
