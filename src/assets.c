@@ -101,3 +101,40 @@ int searchAssets(int ids[], const char names[][TEXT_LEN],
     }
     return matches;
 }
+
+void assetMenu(int ids[], char names[][TEXT_LEN], char types[][TEXT_LEN],
+               double values[], char departments[][TEXT_LEN],
+               char conditions[][TEXT_LEN], int *count)
+{
+    int choice;
+
+    for (;;) {
+        printf("\n--- ASSET MANAGEMENT ---\n");
+        printf("1. Add asset\n");
+        printf("2. Display assets\n");
+        printf("3. Search assets\n");
+        printf("0. Back to main menu\n");
+        choice = readIntInRange("Enter your choice: ", 0, 3);
+
+        if (choice == 0) {
+            return;
+        }
+
+        switch (choice) {
+        case 1:
+            *count = addAsset(ids, names, types, values, departments,
+                              conditions, *count);
+            break;
+        case 2:
+            displayAssets(ids, names, types, values, departments,
+                          conditions, *count);
+            break;
+        case 3:
+            searchAssets(ids, names, types, values, departments,
+                         conditions, *count);
+            break;
+        default:
+            break;
+        }
+    }
+}
