@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "reports.h"
 
-void employeeReport(const int ids[], const char names[][TEXT_LEN],
-                    const char departments[][TEXT_LEN], const double basic[],
-                    const double housing[], const double transport[], int count)
+void employeeReport(const double basic[], const double housing[],
+                    const double transport[], int count)
 {
     int i;
     double salary;

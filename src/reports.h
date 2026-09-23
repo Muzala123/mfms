@@ -10,10 +10,10 @@
 /* Reports module. Reports own no data: every function receives the module
    arrays and counts as parameters, so reports always show current data. */
 
-/* Total employees, average, highest and lowest gross salary. */
-void employeeReport(const int ids[], const char names[][TEXT_LEN],
-                    const char departments[][TEXT_LEN], const double basic[],
-                    const double housing[], const double transport[], int count);
+/* Total employees, average, highest and lowest gross salary.
+   Only the salary arrays are needed; IDs and names are not part of this report. */
+void employeeReport(const double basic[], const double housing[],
+                    const double transport[], int count);
 
 /* Total allocated, total expenditure, remaining, departments over budget. */
 void budgetReport(const char departments[][TEXT_LEN], const double allocated[],
