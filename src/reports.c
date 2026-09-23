@@ -37,3 +37,39 @@ void employeeReport(const double basic[], const double housing[],
     printf("Highest Salary: N$%.2f\n", highest);
     printf("Lowest Salary: N$%.2f\n", lowest);
 }
+
+void budgetReport(const char departments[][TEXT_LEN], const double allocated[],
+                  const double expenditure[], int count)
+{
+    int i;
+    double totalAllocated = 0.0;
+    double totalExpenditure = 0.0;
+    int overCount = 0;
+
+    if (count == 0) {
+        printf("No budgets registered yet.\n");
+        return;
+    }
+
+    for (i = 0; i < count; i++) {
+        totalAllocated += allocated[i];
+        totalExpenditure += expenditure[i];
+    }
+
+    printf("--- BUDGET REPORT ---\n");
+    printf("Total allocated budget: N$%.2f\n", totalAllocated);
+    printf("Total expenditure: N$%.2f\n", totalExpenditure);
+    printf("Remaining budget: N$%.2f\n", totalAllocated - totalExpenditure);
+
+    printf("Departments exceeding budget:\n");
+    for (i = 0; i < count; i++) {
+        if (expenditure[i] > allocated[i]) {
+            printf("  %s: spent N$%.2f of N$%.2f\n", departments[i],
+                   expenditure[i], allocated[i]);
+            overCount++;
+        }
+    }
+    if (overCount == 0) {
+        printf("  None.\n");
+    }
+}
