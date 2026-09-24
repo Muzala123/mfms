@@ -73,3 +73,28 @@ void budgetReport(const char departments[][TEXT_LEN], const double allocated[],
         printf("  None.\n");
     }
 }
+
+void supplierReport(int ids[], const char names[][TEXT_LEN],
+                    const char emails[][TEXT_LEN], const char phones[][TEXT_LEN],
+                    const char towns[][TEXT_LEN], int count)
+{
+    printf("--- SUPPLIER REPORT ---\n");
+    if (count == 0) {
+        printf("No suppliers registered yet.\n");
+        return;
+    }
+    displaySuppliers(ids, names, emails, phones, towns, count);
+}
+
+void assetReport(int ids[], const char names[][TEXT_LEN],
+                 const char types[][TEXT_LEN], const double values[],
+                 const char departments[][TEXT_LEN],
+                 const char conditions[][TEXT_LEN], int count)
+{
+    printf("--- ASSET REPORT ---\n");
+    if (count == 0) {
+        printf("No assets registered yet.\n");
+        return;
+    }
+    displayAssets(ids, names, types, values, departments, conditions, count);
+}
