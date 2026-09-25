@@ -99,9 +99,8 @@ void assetReport(int ids[], const char names[][TEXT_LEN],
     displayAssets(ids, names, types, values, departments, conditions, count);
 }
 
-void reportsMenu(int employeeIds[], char employeeNames[][TEXT_LEN],
-                 char employeeDepartments[][TEXT_LEN], double basic[],
-                 double housing[], double transport[], int *employeeCount,
+void reportsMenu(double basic[], double housing[], double transport[],
+                 int *employeeCount,
                  char budgetDepartments[][TEXT_LEN], double allocated[],
                  double expenditure[], int *budgetCount,
                  int supplierIds[], char supplierNames[][TEXT_LEN],

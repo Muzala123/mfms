@@ -30,10 +30,10 @@ void assetReport(int ids[], const char names[][TEXT_LEN],
                  const char departments[][TEXT_LEN],
                  const char conditions[][TEXT_LEN], int count);
 
-/* Reports sub menu loop. */
-void reportsMenu(int employeeIds[], char employeeNames[][TEXT_LEN],
-                 char employeeDepartments[][TEXT_LEN], double basic[],
-                 double housing[], double transport[], int *employeeCount,
+/* Reports sub menu loop. Employee identity arrays are not needed here:
+   only the salary arrays feed the employee report. */
+void reportsMenu(double basic[], double housing[], double transport[],
+                 int *employeeCount,
                  char budgetDepartments[][TEXT_LEN], double allocated[],
                  double expenditure[], int *budgetCount,
                  int supplierIds[], char supplierNames[][TEXT_LEN],

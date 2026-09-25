@@ -69,8 +69,7 @@ int main(void)
                       astConditions, &astCount);
             break;
         case 5:
-            reportsMenu(empIds, empNames, empDepts, empBasic, empHousing,
-                        empTransport, &empCount,
+            reportsMenu(empBasic, empHousing, empTransport, &empCount,
                         budDepts, budAllocated, budExpenditure, &budCount,
                         supIds, supNames, supEmails, supPhones, supTowns,
                         &supCount,
