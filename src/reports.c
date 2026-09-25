@@ -98,3 +98,52 @@ void assetReport(int ids[], const char names[][TEXT_LEN],
     }
     displayAssets(ids, names, types, values, departments, conditions, count);
 }
+
+void reportsMenu(int employeeIds[], char employeeNames[][TEXT_LEN],
+                 char employeeDepartments[][TEXT_LEN], double basic[],
+                 double housing[], double transport[], int *employeeCount,
+                 char budgetDepartments[][TEXT_LEN], double allocated[],
+                 double expenditure[], int *budgetCount,
+                 int supplierIds[], char supplierNames[][TEXT_LEN],
+                 char emails[][TEXT_LEN], char phones[][TEXT_LEN],
+                 char towns[][TEXT_LEN], int *supplierCount,
+                 int assetIds[], char assetNames[][TEXT_LEN],
+                 char types[][TEXT_LEN], double values[],
+                 char assetDepartments[][TEXT_LEN], char conditions[][TEXT_LEN],
+                 int *assetCount)
+{
+    int choice;
+
+    for (;;) {
+        printf("\n--- REPORTS ---\n");
+        printf("1. Employee report\n");
+        printf("2. Budget report\n");
+        printf("3. Supplier report\n");
+        printf("4. Asset report\n");
+        printf("0. Back to main menu\n");
+        choice = readIntInRange("Enter your choice: ", 0, 4);
+
+        if (choice == 0) {
+            return;
+        }
+
+        switch (choice) {
+        case 1:
+            employeeReport(basic, housing, transport, *employeeCount);
+            break;
+        case 2:
+            budgetReport(budgetDepartments, allocated, expenditure, *budgetCount);
+            break;
+        case 3:
+            supplierReport(supplierIds, supplierNames, emails, phones, towns,
+                           *supplierCount);
+            break;
+        case 4:
+            assetReport(assetIds, assetNames, types, values, assetDepartments,
+                        conditions, *assetCount);
+            break;
+        default:
+            break;
+        }
+    }
+}
