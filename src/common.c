@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "common.h"
 
@@ -11,6 +12,14 @@ static void clearLine(void)
     }
 }
 
+/* The input stream ended (for example Ctrl+D). Without this the helpers
+   would loop forever because scanf keeps returning EOF. */
+static void inputClosed(void)
+{
+    printf("\nInput closed. Exiting the system.\n");
+    exit(0);
+}
+
 int readIntInRange(const char *prompt, int min, int max)
 {
     int value;
@@ -19,6 +28,9 @@ int readIntInRange(const char *prompt, int min, int max)
     for (;;) {
         printf("%s", prompt);
         read = scanf("%d", &value);
+        if (read == EOF) {
+            inputClosed();
+        }
         if (read != 1) {
             printf("Invalid input. Please enter a number.\n");
             clearLine();
@@ -41,6 +53,9 @@ double readDoublePositive(const char *prompt)
     for (;;) {
         printf("%s", prompt);
         read = scanf("%lf", &value);
+        if (read == EOF) {
+            inputClosed();
+        }
         if (read != 1) {
             printf("Invalid input. Please enter a number.\n");
             clearLine();
@@ -60,7 +75,7 @@ void readText(const char *prompt, char buffer[], int len)
     for (;;) {
         printf("%s", prompt);
         if (fgets(buffer, len, stdin) == NULL) {
-            continue; /* input stream closed, try again */
+            inputClosed(); /* input stream ended */
         }
         if (strchr(buffer, '\n') == NULL) {
             clearLine(); /* line longer than the buffer, discard the rest */
