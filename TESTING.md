@@ -16,6 +16,8 @@ the terminal and the output checked against the expected result.
 | Zero money value accepted | `0` | accepted (0 is not negative) | PASS |
 | Empty text field | Enter | "Input cannot be empty." | PASS |
 | Text containing spaces | `ABC Office Supplies` | stored whole, length 19, no newline | PASS |
+| End of input at a prompt (Ctrl+D) | "Input closed. Exiting the system." and clean exit | PASS |
+| Employee register capacity | 100 adds accepted, 101st rejected with "The employee register is full" | PASS |
 
 ## 2. Employee module
 
