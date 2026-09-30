@@ -47,6 +47,12 @@ gcc -std=c99 -Wall -Wextra -Isrc -o mfms src/main.c src/common.c src/employees.c
 
 The build completes with zero warnings.
 
+In VS Code the same build is available as the default build task
+(`.vscode/tasks.json`): open the menu Terminal, then Run Build Task, and run
+`./mfms` in the terminal afterwards. Do not use the Run button on a single
+file: a multi file C project must compile all `.c` files together, so building
+`main.c` alone fails at the linking stage.
+
 ## How to Run
 
 ```bash
