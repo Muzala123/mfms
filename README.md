@@ -45,13 +45,9 @@ produces summary reports. Data is kept in memory for the duration of a session.
 gcc -std=c99 -Wall -Wextra -Isrc -o mfms src/main.c src/common.c src/employees.c src/budget.c src/suppliers.c src/assets.c src/reports.c
 ```
 
-The build completes with zero warnings.
-
-In VS Code the same build is available as the default build task
-(`.vscode/tasks.json`): open the menu Terminal, then Run Build Task, and run
-`./mfms` in the terminal afterwards. Do not use the Run button on a single
-file: a multi file C project must compile all `.c` files together, so building
-`main.c` alone fails at the linking stage.
+The build completes with zero warnings. Two separate steps are used: the gcc
+command BUILDS the program and creates the executable file `mfms`; the second
+command RUNS it. After changing any source file, build again before running.
 
 ## How to Run
 
