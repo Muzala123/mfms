@@ -6,9 +6,6 @@
 #include "assets.h"
 #include "reports.h"
 
-/* Main menu of the Municipal Financial Management System.
-   All module data lives here in parallel arrays and is passed to the
-   module sub menus. Data is kept in memory only and is lost on exit. */
 
 int main(void)
 {
