@@ -7,31 +7,26 @@
 #include "suppliers.h"
 #include "assets.h"
 
-/* Reports module. Reports own no data: every function receives the module
-   arrays and counts as parameters, so reports always show current data. */
 
-/* Total employees, average, highest and lowest gross salary.
-   Only the salary arrays are needed; IDs and names are not part of this report. */
 void employeeReport(const double basic[], const double housing[],
                     const double transport[], int count);
 
-/* Total allocated, total expenditure, remaining, departments over budget. */
+
 void budgetReport(const char departments[][TEXT_LEN], const double allocated[],
                   const double expenditure[], int count);
 
-/* Full supplier listing. */
+
 void supplierReport(int ids[], const char names[][TEXT_LEN],
                     const char emails[][TEXT_LEN], const char phones[][TEXT_LEN],
                     const char towns[][TEXT_LEN], int count);
 
-/* Full asset listing. */
+
 void assetReport(int ids[], const char names[][TEXT_LEN],
                  const char types[][TEXT_LEN], const double values[],
                  const char departments[][TEXT_LEN],
                  const char conditions[][TEXT_LEN], int count);
 
-/* Reports sub menu loop. Employee identity arrays are not needed here:
-   only the salary arrays feed the employee report. */
+
 void reportsMenu(double basic[], double housing[], double transport[],
                  int *employeeCount,
                  char budgetDepartments[][TEXT_LEN], double allocated[],
