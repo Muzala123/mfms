@@ -4,6 +4,7 @@
 void employeeReport(const double basic[], const double housing[],
                     const double transport[], int count)
 {
+  //Variable declaration
     int i;
     double salary;
     double total = 0.0;
@@ -15,7 +16,7 @@ void employeeReport(const double basic[], const double housing[],
         printf("No employees registered yet.\n");
         return;
     }
-
+//calculation implementation
     highest = calculateSalary(basic[0], housing[0], transport[0]);
     lowest = highest;
 
@@ -30,32 +31,33 @@ void employeeReport(const double basic[], const double housing[],
         }
     }
     average = total / count;
-
+// What the programme will display after calculations.
     printf("--- EMPLOYEE REPORT ---\n");
     printf("Total Employees: %d\n", count);
     printf("Average Salary: N$%.2f\n", average);
     printf("Highest Salary: N$%.2f\n", highest);
     printf("Lowest Salary: N$%.2f\n", lowest);
 }
-
+// define the budget report funtion.
 void budgetReport(const char departments[][TEXT_LEN], const double allocated[],
                   const double expenditure[], int count)
 {
+  //introducing varibles 
     int i;
     double totalAllocated = 0.0;
     double totalExpenditure = 0.0;
     int overCount = 0;
-
+// an if condition when count is 0.
     if (count == 0) {
         printf("No budgets registered yet.\n");
         return;
     }
-
+// loop for calculating more then one bedget.
     for (i = 0; i < count; i++) {
         totalAllocated += allocated[i];
         totalExpenditure += expenditure[i];
     }
-
+//what dudget report returns after calculation.
     printf("--- BUDGET REPORT ---\n");
     printf("Total allocated budget: N$%.2f\n", totalAllocated);
     printf("Total expenditure: N$%.2f\n", totalExpenditure);
@@ -98,7 +100,7 @@ void assetReport(int ids[], const char names[][TEXT_LEN],
     }
     displayAssets(ids, names, types, values, departments, conditions, count);
 }
-
+// define our menu ( reportsMenu)
 void reportsMenu(double basic[], double housing[], double transport[],
                  int *employeeCount,
                  char budgetDepartments[][TEXT_LEN], double allocated[],
@@ -113,7 +115,7 @@ void reportsMenu(double basic[], double housing[], double transport[],
 {
     int choice;
 
-    for (;;) {
+    for (;;) { //options in the menu.
         printf("\n--- REPORTS ---\n");
         printf("1. Employee report\n");
         printf("2. Budget report\n");
