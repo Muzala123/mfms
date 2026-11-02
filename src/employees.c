@@ -13,7 +13,7 @@ int addEmployee(int ids[], char names[][TEXT_LEN], char departments[][TEXT_LEN],
 
     printf("--- Add Employee ---\n");
 
-    /* IDs are assigned in registration order, starting from 1. */
+   
     ids[count] = count + 1;
 
     readText("Name: ", names[count], TEXT_LEN);
