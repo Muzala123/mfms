@@ -14,7 +14,7 @@ int addSupplier(int ids[], char names[][TEXT_LEN], char emails[][TEXT_LEN],
 
     printf("--- Add Supplier ---\n");
 
-    /* Supplier IDs are assigned in registration order, starting from 1. */
+   
     ids[count] = count + 1;
 
     readText("Supplier name: ", names[count], TEXT_LEN);
