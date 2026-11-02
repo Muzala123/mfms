@@ -6,7 +6,7 @@
 
 #define MAX_BUDGETS 100
 
-
+//declaration of functions
 int addBudget(char departments[][TEXT_LEN], double allocated[],
               double expenditure[], int count);
 
